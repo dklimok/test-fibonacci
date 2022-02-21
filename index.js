@@ -12,22 +12,20 @@ const fibonacci = (num) => {
 function nxtPrmFib(number) {
     let r = 0;
     let l = 1;
-    while (true) {
         var fib = fibonacci(l);
         console.log('fib', fib, number);
-        if (fib > number) {
-            if (ispnum(fib)) {
-                r = fib;
-                break;
-                } else {
-                    l = l + 1;    
-                    console.warn('bumping to ', fib);
-                }
-            } else {
-                l = l + 1;
-                console.warn('bumping to', fib);
-            }
+    if (fib <= number) {
+        l = l + 1;
+        console.warn('bumping to', fib);
+    } else {
+        if (ispnum(fib)) {
+            r = fib;
+        } else {
+            l = l + 1;
+            console.warn('bumping to ', fib);
+        }
     }
+
     console.warn('Next prime fib ', r);
 }
 
