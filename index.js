@@ -4,11 +4,29 @@ const isPrime = (num) => {
             return true
         }
     }
-
     return false
-};
+}
 
 module.exports.isPrime = isPrime
+
+const getNextFibonacciAfter = (
+    lastKnown,
+    toBeAfter
+) => {
+   let { oneStepBack, twoStepsBack} = lastKnown
+    let nextFib = oneStepBack + twoStepsBack
+    while (nextFib < toBeAfter) {
+        twoStepsBack = oneStepBack
+        oneStepBack = nextFib
+        nextFib = oneStepBack + twoStepsBack
+    }
+   console.log(`next fib after ${toBeAfter} is ${nextFib} = ${oneStepBack} + ${twoStepsBack}`)
+   return {
+       oneStepBack: nextFib,
+       twoStepsBack: oneStepBack
+   }
+}
+module.exports.getNextFibonacciAfter = getNextFibonacciAfter
 
 const isFibonacci = (num) => {
     if (num <= 1) {
@@ -41,4 +59,5 @@ function getNextPrimeFibonacciNumber(number) {
     console.warn('Next prime fib ', r);
 }
 
-getNextPrimeFibonacciNumber(20);
+//getNextPrimeFibonacciNumber(20);
+
