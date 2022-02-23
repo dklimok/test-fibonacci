@@ -1,22 +1,32 @@
-var ispnum = function(num) {
-    for(var i = 2; i < num; i++)
-      if  (num % i === 0) return false;
-    return num > 1;
+const isPrime = (num) => {
+    for (let i = 2; i <= Math.floor(num/2); i++) {
+        if (num % i === 0) {
+            return true
+        }
+    }
+
+    return false
 };
 
-const fibonacci = (num) => {
-    if (num <= 1)return 1;
-  return fibonacci(num - 1) + fibonacci(num - 2);
-};
+module.exports.isPrime = isPrime
 
-function nxtPrmFib(number) {
+const isFibonacci = (num) => {
+    if (num <= 1) {
+        return 1
+    }
+  return isFibonacci(num - 1) + isFibonacci(num - 2);
+};
+module.exports.isFibonacci = isFibonacci
+
+function getNextPrimeFibonacciNumber(number) {
+    //todo add imput validator for integer possitive numbers if needed
     let r = 0;
     let l = 1;
     while (true) {
-        var fib = fibonacci(l);
+        var fib = isFibonacci(l);
         console.log('fib', fib, number);
         if (fib > number) {
-            if (ispnum(fib)) {
+            if (!isPrime(fib)) {
                 r = fib;
                 break;
                 } else {
@@ -31,4 +41,4 @@ function nxtPrmFib(number) {
     console.warn('Next prime fib ', r);
 }
 
-nxtPrmFib(20);
+getNextPrimeFibonacciNumber(20);
